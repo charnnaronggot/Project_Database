@@ -26,6 +26,9 @@ Route::get('/about', function () {
     return view('about');
 });
 
+
+Route::get('/test' ,[AdminController::class,'test']) -> name('test');
+
 Route::get('/admin' ,[AdminController::class,'index']) -> name('admin');
 
 

@@ -8,15 +8,7 @@ class AdminController extends Controller
 {
     function index(){
 
-        $users = Auth::user() -> name;
-        if($users == "EMAENEL"){
-            echo"admin" ;
-        }else{
-            
-            return redirect('/dashboard');
-        
-        }
-    
+
     }
 
     public function store(Request $request){
@@ -41,6 +33,8 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success',"บันทึกข้อมูลเรียบร้อย");
     }
+
+    
 
     //
 }

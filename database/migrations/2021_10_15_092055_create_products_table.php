@@ -17,9 +17,9 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->integer('product_code');
             $table->text('product_name');
-            $table->integer('product_line');
-            $table->integer('product_scale');
-            $table->integer('product_vendor');
+            $table->text('product_line');
+            $table->text('product_scale');
+            $table->text('product_vendor');
             $table->text('product_description');
             $table->integer('quantity_instock');
             $table->integer('buy_price');

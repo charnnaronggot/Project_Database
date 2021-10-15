@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
     use HasFactory;
+    use SolfDelete;
+
+    protected $fillable = [
+       
+        'customerNumber',
+        'customerName',
+        'contactLastname',
+        'contactFirstName',
+        'Phone',
+        'AddressID',
+        'SaleRepEmployeeNumber'
+
+
+    ];
 }

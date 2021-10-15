@@ -11,6 +11,13 @@ class Employee extends Model
     use SolfDelete;
 
     protected $fillable = [
-       
+        'firstname',
+        'lastname',
+        'extention',
+        'email',
+        'password',
+        'officerCode',
+        'reportTo',
+        'jobTitle'
     ];
 }
