@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Customer;
 use App\Models\Employee;
+use App\Models\Product;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -56,6 +59,21 @@ class AdminController extends Controller
 
         }
     }
+
+    function  product(){
+        $products = Product::all();
+        $user = Auth::user() -> name  ;
+
+        if($user== "EMANUEL"){
+
+        return view('Admin.product' ,compact('products'));
+
+        }else {
+
+            return view('/dashboard');
+
+        }
+    }
    
     function  addEmployee(Request $request){
         // $employees = Employee::all();
@@ -68,29 +86,82 @@ class AdminController extends Controller
 
         //     return view('/dashboard');
 
-        // }
+        //dd($request -> firstname ,  $request -> lastname);
+        
+        $request->validate(
+            [
+                'firstname'=>'required|max:255',
+                'lastname'=>'required|max:255'
+            ],
+            [
+                'firstname.required'=>"กรุณาป้อนชื่อด้วยครับ",
+                'firstname.max' => "ห้ามป้อนเกิน 255 ตัวอักษร",
+                'lastname.required'=>"กรุณาป้อนชื่อด้วยครับ",
+                'lastname.max' => "ห้ามป้อนเกิน 255 ตัวอักษร",
+            ]
+        );
+        //บันทึกข้อมูล
+        $data = array();
+        $data["firstname"] = $request->firstname;
+        $data["lastname"] = $request->lastname;
+        $data["extention"] = $request->extention;
+        $data["email"] = $request->email;
+        $data["password"] = Hash::make('$request->password');
+        $data["officerCode"] = $request->officerCode;
+        $data["reportTo"] = $request->reportTo;
+        $data["jobTitle"] = $request->jobTitle;
+        $data["id"] = Auth::user()->id;
+
+        //query builder
+        DB::table('employees')->insert($data);
+
+        return redirect()->back()->with('success',"บันทึกข้อมูลเรียบร้อย");
+    }
+
+
+    function  addProduct(Request $request){
+        // $employees = Employee::all();
+        // $user = Auth::user() -> name  ;
+        // if($user== "EMANUEL"){
+
+        // return view('Admin.addEmployee' ,compact('employees'));
+
+        // }else {
+
+        //     return view('/dashboard');
+
+        //dd($request -> firstname ,  $request -> lastname);
+        
         // $request->validate(
         //     [
-        //         'firstname'=>'required|max:255'
+        //         'firstname'=>'required|max:255',
+        //         'lastname'=>'required|max:255'
         //     ],
         //     [
         //         'firstname.required'=>"กรุณาป้อนชื่อด้วยครับ",
         //         'firstname.max' => "ห้ามป้อนเกิน 255 ตัวอักษร",
+        //         'lastname.required'=>"กรุณาป้อนชื่อด้วยครับ",
+        //         'lastname.max' => "ห้ามป้อนเกิน 255 ตัวอักษร",
         //     ]
-        // );
-        // //บันทึกข้อมูล
-        // $data = array();
-        // $data["department_name"] = $request->department_name;
-        // $data["user_id"] = Auth::user()->id;
+        //);
+        //บันทึกข้อมูล
+        $data = array();
+        $data["product_code"] = $request->product_code;
+        $data["product_name"] = $request->product_name;
+        $data["product_line"] = $request->product_line;
+        $data["product_scale"] = $request->product_scale;
+        $data["product_vendor"] = $request->product_vendor;
+        $data["product_description"] = $request->product_description;
+        $data["quantity_instock"] = $request->quantity_instock;
+        $data["buy_price"] = $request->buy_price;
+        $data["MSRP"] = $request->MSRP;
+        $data["id"] = Auth::user()->id;
 
-        // //query builder
-        // DB::table('departments')->insert($data);
+        //query builder
+        DB::table('products')->insert($data);
 
-        // return redirect()->back()->with('success',"บันทึกข้อมูลเรียบร้อย");
+        return redirect()->back()->with('success',"บันทึกข้อมูลเรียบร้อย");
     }
-
-
-
 
 
 

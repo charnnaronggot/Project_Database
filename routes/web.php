@@ -37,10 +37,12 @@ Route::get('/customer' ,[AdminController::class,'customer']) -> name('customer')
 
 
 
-Route::get('/employee' ,[AdminController::class,'employee']) -> name('employee');
+Route::get('/employee/all' ,[AdminController::class,'employee']) -> name('employee');
+Route::post('/employee/add' ,[AdminController::class,'addEmployee']) -> name('addEmployee');
 //Route::get('/employee/add' ,[AdminController::class,'addEmployee']) -> name('addEmployee');
 
-
+Route::get('/product/all' ,[AdminController::class,'product']) -> name('product');
+Route::post('/product/add' ,[AdminController::class,'addProduct']) -> name('addProduct');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     $users = User::all();
