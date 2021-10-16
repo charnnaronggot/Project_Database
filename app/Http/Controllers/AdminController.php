@@ -132,18 +132,18 @@ class AdminController extends Controller
 
         //dd($request -> firstname ,  $request -> lastname);
         
-        // $request->validate(
-        //     [
-        //         'firstname'=>'required|max:255',
-        //         'lastname'=>'required|max:255'
-        //     ],
-        //     [
-        //         'firstname.required'=>"กรุณาป้อนชื่อด้วยครับ",
-        //         'firstname.max' => "ห้ามป้อนเกิน 255 ตัวอักษร",
-        //         'lastname.required'=>"กรุณาป้อนชื่อด้วยครับ",
-        //         'lastname.max' => "ห้ามป้อนเกิน 255 ตัวอักษร",
-        //     ]
-        //);
+        $request->validate(
+            [
+                'product_code'=>'required|max:255|unique:products',
+                'product_name'=>'required|max:255'
+            ],
+            [
+                'product_code.required'=>"กรุณาป้อนชื่อด้วยครับ",
+                'product_code.max' => "ห้ามป้อนเกิน 255 ตัวอักษร",
+                'product_name.required'=>"กรุณาป้อนชื่อด้วยครับ",
+                'product_name.max' => "ห้ามป้อนเกิน 255 ตัวอักษร",
+            ]
+        );
         //บันทึกข้อมูล
         $data = array();
         $data["product_code"] = $request->product_code;
@@ -155,8 +155,8 @@ class AdminController extends Controller
         $data["quantity_instock"] = $request->quantity_instock;
         $data["buy_price"] = $request->buy_price;
         $data["MSRP"] = $request->MSRP;
-        $data["id"] = Auth::user()->id;
-
+     
+       
         //query builder
         DB::table('products')->insert($data);
 

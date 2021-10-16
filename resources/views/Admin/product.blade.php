@@ -11,8 +11,8 @@
                 HELLO  EMPLOYEE
                     <div class="py-5">
                         <div class = "col-md-12">
-                            <div class = "card-header">ตารางข้อมูลพนักงาน</div>
-
+                            <div class = "card-header">ตารางข้อมูล</div>
+                          
                         </div>
                     <div>
                     <div class = "col-md-12">
@@ -42,7 +42,11 @@
                                             <input type="integer" class = "form-control" name = "MSRP">
 
                                         </div>
-                                       
+                                        @error('product_code')
+                                            <div class="my-2">
+                                                <span class="text-danger">{{$message}}</span>
+                                            </div>
+                                        @enderror
                                         <input type="submit" value = บันทึก  class="btn btn-primary">
                                     </form>
 

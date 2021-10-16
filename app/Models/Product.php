@@ -24,4 +24,7 @@ class Product extends Model
         'MSRP'
     ];
 
+    public function user(){
+        return $this->hasOne(User::class,'id','product_code');
+    }
 }
