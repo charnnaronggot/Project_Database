@@ -24,15 +24,9 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'product_code',
-        'product_name',
-        'product_line',
-        'product_scale',
-        'product_vendor',
-        'product_description',
-        'quantity_instock',
-        'buy_price',
-        'MSRP'
+        'name',
+        'email',
+        'password',
 
     ];
 

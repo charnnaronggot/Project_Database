@@ -16,13 +16,11 @@ class CheckAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-       
-        if($request -> users == "EMAENEL"){
-            return $next($request);
-        }else{
-            //return redirect('/');
-            echo"$request";
-        }
+         
+
+
+        
+   
         
     }
 }

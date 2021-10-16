@@ -23,7 +23,7 @@ class CreateCustomersTable extends Migration
             $table->integer('AddressID');
             $table->integer('SaleRepEmployeeNumber');
             $table->timestamps();
-            $table->solfDeletes();
+            $table->softDeletes();
         });
     }
 

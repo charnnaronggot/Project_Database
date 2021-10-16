@@ -24,7 +24,7 @@ class CreateProductsTable extends Migration
             $table->integer('quantity_instock');
             $table->integer('buy_price');
             $table->integer('MSRP');
-            $table->solfDeletes();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

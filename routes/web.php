@@ -28,9 +28,17 @@ Route::get('/about', function () {
 
 
 Route::get('/test' ,[AdminController::class,'test']) -> name('test');
-
 Route::get('/admin' ,[AdminController::class,'index']) -> name('admin');
 
+
+
+Route::get('/customer' ,[AdminController::class,'customer']) -> name('customer');
+
+
+
+
+Route::get('/employee' ,[AdminController::class,'employee']) -> name('employee');
+//Route::get('/employee/add' ,[AdminController::class,'addEmployee']) -> name('addEmployee');
 
 
 

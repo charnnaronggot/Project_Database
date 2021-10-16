@@ -24,7 +24,7 @@ class CreateEmployeesTable extends Migration
             $table->text('reportTo');
             $table->text('jobTitle');
             $table->timestamps();
-            $table->solfDeletes();
+            $table->softDeletes();
         });
     }
 

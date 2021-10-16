@@ -18,8 +18,8 @@
                     <x-jet-nav-link href="{{ route('admin') }}">
                         {{ __('Admin') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('test') }}">
-                        {{ __('TEST') }}
+                    <x-jet-nav-link href="{{ route('employee') }}">
+                        {{ __('Employee') }}
                     </x-jet-nav-link>
                 </div>
             </div>
