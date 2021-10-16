@@ -110,7 +110,7 @@ class AdminController extends Controller
         $data["officerCode"] = $request->officerCode;
         $data["reportTo"] = $request->reportTo;
         $data["jobTitle"] = $request->jobTitle;
-        $data["id"] = Auth::user()->id;
+       
 
         //query builder
         DB::table('employees')->insert($data);
