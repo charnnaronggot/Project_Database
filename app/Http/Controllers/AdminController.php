@@ -76,17 +76,7 @@ class AdminController extends Controller
     }
    
     function  addEmployee(Request $request){
-        // $employees = Employee::all();
-        // $user = Auth::user() -> name  ;
-        // if($user== "EMANUEL"){
 
-        // return view('Admin.addEmployee' ,compact('employees'));
-
-        // }else {
-
-        //     return view('/dashboard');
-
-        //dd($request -> firstname ,  $request -> lastname);
         
         $request->validate(
             [
@@ -119,18 +109,9 @@ class AdminController extends Controller
     }
 
 
+
     function  addProduct(Request $request){
-        // $employees = Employee::all();
-        // $user = Auth::user() -> name  ;
-        // if($user== "EMANUEL"){
-
-        // return view('Admin.addEmployee' ,compact('employees'));
-
-        // }else {
-
-        //     return view('/dashboard');
-
-        //dd($request -> firstname ,  $request -> lastname);
+       
         
         $request->validate(
             [
@@ -168,28 +149,67 @@ class AdminController extends Controller
 
 
 
+        public function editProduct($id){
+           //$edit = DB::table('products') -> get() -> where($request = 'product_code');
+        //    $users = DB::table('products')->where( $request-> product_cod , product->product_code);
 
-    public function store(Request $request){
-        //ตรวจสอบข้อมูล
-        $request->validate(
-            [
-                'department_name'=>'required|unique:departments|max:255'
-            ],
-            [
-                'department_name.required'=>"กรุณาป้อนชื่อแผนกด้วยครับ",
-                'department_name.max' => "ห้ามป้อนเกิน 255 ตัวอักษร",
-                'department_name.unique'=>"มีข้อมูลชื่อแผนกนี้ในฐานข้อมูลแล้ว"
-            ]
-        );
-        //บันทึกข้อมูล
-        $data = array();
-        $data["product_code"] = $request->product_code;
-        $data["user_id"] = Auth::user()->id;
+        //    foreach ($users as $user) {
+        //        echo $user->name;
+        //    }
+        
+        $data =  product::find($id) ;
+        return view('admin.editProduct' , ['data' => $data]);    
+        
+                    // $product_code = $request->input('product_code');
+                    // $product_name = $request->input('product_name');
+                    // $product_line = $request->input('product_name');
+                    // $product_scale = $request->input('product_name');
 
-        //query builder
-        DB::table('departments')->insert($data);
+                    // dd($product_code , $product_name , $product_line , $product_scale);
+                                 //  $product = Product::find($product_code);
+             
+            //  return view('admin.editProduct',compact('product'));
+        }
 
-        return redirect()->back()->with('success',"บันทึกข้อมูลเรียบร้อย");
+        public function updateProduct(Request $request ){
+
+            //ตรวจสอบข้อมูล
+            // $request->validate(
+            //     [
+            //         'department_name'=>'required|unique:departments|max:255'
+            //     ],
+            //     [
+            //         'department_name.required'=>"กรุณาป้อนชื่อแผนกด้วยครับ",
+            //         'department_name.max' => "ห้ามป้อนเกิน 255 ตัวอักษร",
+            //         'department_name.unique'=>"มีข้อมูลชื่อแผนกนี้ในฐานข้อมูลแล้ว"
+            //     ]
+            // );
+
+            //return $request -> input() ; 
+            $data = product::find($request->product_code) ;
+            $data->product_code = $request-> product_code ; 
+            $data->product_name = $request-> product_name ; 
+            $data->product_line = $request-> product_line ; 
+            $data->product_scale = $request-> product_scale ; 
+            $data->product_vendor = $request-> product_vendor ; 
+            $data->product_description = $request-> product_description ; 
+            $data->quantity_instock = $request-> quantity_instock ; 
+            $data->buy_price = $request-> buy_price ; 
+            $data->MSRP = $request-> MSRP; 
+            $data-> save() ;
+            return redirect ('/product/all') ; 
+
+            //return $request ->input();
+            //dd($product_code);
+            // $update = Product::find($product_code)->update([
+            //     'product_code'=>$request->product_code,
+            //    // 'user_id'=>Auth::user()->id
+            // ]);
+            // return redirect()->route('product')->with('success',"อัพเดตข้อมูลเรียบร้อย");
+        }
+    
+    public function categories(){
+
     }
 
     
