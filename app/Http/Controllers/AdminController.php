@@ -186,7 +186,7 @@ class AdminController extends Controller
             // );
 
             //return $request -> input() ; 
-            $data = product::find($request->product_code) ;
+            $data = product::find($request->id) ;
             $data->product_code = $request-> product_code ; 
             $data->product_name = $request-> product_name ; 
             $data->product_line = $request-> product_line ; 

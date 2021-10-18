@@ -41,8 +41,10 @@ Route::get('/employee/all' ,[AdminController::class,'employee']) -> name('employ
 Route::post('/employee/add' ,[AdminController::class,'addEmployee']) -> name('addEmployee');
 //Route::get('/employee/add' ,[AdminController::class,'addEmployee']) -> name('addEmployee');
 
-Route::get('/product/all' ,[AdminController::class,'product']) -> name('product');
-Route::post('/product/add' ,[AdminController::class,'addProduct']) -> name('addProduct');
+Route::get('/product/all' ,[AdminController::class,'product']) -> name('product'); 
+Route::post('/product/add' ,[AdminController::class,'addProduct']) -> name('addProduct') -> middleware('check');
+Route::get('product/edit/{product_code}' ,[AdminController::class,'editProduct']);
+Route::post('/product/update/',[AdminController::class,'updateProduct']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     $users = User::all();

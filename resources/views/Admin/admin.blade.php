@@ -16,29 +16,29 @@
   
 
 <div class = "container">
-<div class = "row ">
-<table class="table">
-  <thead>
-      <tr>
-          <th scope="col">No</th>
-          <th scope="col">Name</th>
-          <th scope="col">Email</th>
-          <th scope="col">Date</th>
-      </tr>
-  </thead>
-  <tbody>
-      @foreach($users as $row)
-      <tr>
-          <th scope="row">1</th>
-          <td>{{$row -> name}}</td>
-          <td>{{$row -> email}}</td>
-          <td>{{$row -> created_at}}</td>
-      </tr>
+    <div class = "row ">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($users as $row)
+                <tr>
+                    <th scope="row">1</th>
+                    <td>{{$row -> name}}</td>
+                    <td>{{$row -> email}}</td>
+                    <td>{{$row -> created_at}}</td>
+                </tr>
 
-      @endforeach
-</tbody>
-</table>
-</div>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>
 
 </div>
