@@ -46,6 +46,7 @@ Route::post('/product/add' ,[AdminController::class,'addProduct']) -> name('addP
 Route::get('product/edit/{product_code}' ,[AdminController::class,'editProduct']);
 Route::post('/product/update/',[AdminController::class,'updateProduct']);
 
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     $users = User::all();
     return view('dashboard' , compact('users'));

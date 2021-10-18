@@ -70,7 +70,7 @@ class AdminController extends Controller
 
         }else {
 
-            return view('/dashboard');
+            return view('Customer.product' ,compact('products')) ;
 
         }
     }

@@ -36,6 +36,7 @@
                                                     <td>{{$row -> product_name}}</td>
                                                     <td>{{$row -> product_line}}</td>
                                                     <td>{{$row -> product_scale}}</td>
+                       
                                                     <td>{{$row -> product_vendor}}</td>
                                                     <td>{{$row -> product_description}}</td>
                                                     <td>{{$row -> quantity_instock}}</td>

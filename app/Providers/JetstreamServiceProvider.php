@@ -6,6 +6,19 @@ use App\Actions\Jetstream\DeleteUser;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Jetstream\Jetstream;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Laravel\Fortify\Fortify;
+
+use App\Actions\Fortify\CreateNewUser;
+use App\Actions\Fortify\ResetUserPassword;
+use App\Actions\Fortify\UpdateUserPassword;
+use App\Actions\Fortify\UpdateUserProfileInformation;
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
+
+
 class JetstreamServiceProvider extends ServiceProvider
 {
     /**
@@ -28,6 +41,19 @@ class JetstreamServiceProvider extends ServiceProvider
         $this->configurePermissions();
 
         Jetstream::deleteUsersUsing(DeleteUser::class);
+
+        Fortify::authenticateUsing(function (Request $request){
+            $user = User::where('email' , $request ->login)
+                    ->orWhere('name' , $request -> login)
+                    ->orWhere('phone_no' , $request ->login) 
+                    ->first() ;
+
+                    if(
+                        $user && Hash::check($request -> password , $user -> password)
+                    )   {
+                            return $user ;
+                        }
+                });
     }
 
     /**
