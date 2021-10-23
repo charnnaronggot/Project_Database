@@ -12,7 +12,7 @@
       <div class="py-12">
   
           
-      <div class="py-12">
+      <div class="py-8">
   
 
 <div class = "container">
@@ -21,9 +21,17 @@
             <thead>
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Name</th>
+                    <th scope="col">USERNAME</th>
+                    <th scope="col">firstname</th>
+                    <th scope="col">lastname</th>
                     <th scope="col">Email</th>
+                    <th scope="col">extention</th>
+                    <th scope="col">officeCode</th>
+                    <th scope="col">reportTo</th>
+                    <th scope="col">jobTitle</th>
                     <th scope="col">Date</th>
+                   
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -31,10 +39,23 @@
                 <tr>
                     <th scope="row">1</th>
                     <td>{{$row -> name}}</td>
+                    <td>{{$row -> firstname}}</td>
+                    <td>{{$row -> lastname}}</td>
                     <td>{{$row -> email}}</td>
+                    <td>{{$row -> extention}}</td>
+                    <td>{{$row -> officeCode}}</td>
+                    <td>{{$row -> reportTo}}</td>
+                    <td>{{$row -> jobTitle}}</td>
                     <td>{{$row -> created_at}}</td>
+                   
+                    <td>
+                        <a href= {{url('/user/edit/'.$row->id)}} class="btn btn-primary">แก้ไข</a>
+                    </td>
+                    <td>
+                        <a href= {{url('/user/delete/'.$row->id)}} class="btn btn-danger">ลบ</a>
+                    </td>
                 </tr>
-
+                   
                 @endforeach
             </tbody>
         </table>

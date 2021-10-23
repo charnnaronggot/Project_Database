@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProductController;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 
 /*
@@ -41,13 +42,26 @@ Route::get('/employee/all' ,[AdminController::class,'employee']) -> name('employ
 Route::post('/employee/add' ,[AdminController::class,'addEmployee']) -> name('addEmployee');
 //Route::get('/employee/add' ,[AdminController::class,'addEmployee']) -> name('addEmployee');
 
-Route::get('/product/all' ,[AdminController::class,'product']) -> name('product'); 
-Route::post('/product/add' ,[AdminController::class,'addProduct']) -> name('addProduct') -> middleware('check');
-Route::get('product/edit/{product_code}' ,[AdminController::class,'editProduct']);
-Route::post('/product/update/',[AdminController::class,'updateProduct']);
+Route::get('/product/all' ,[AdminController::class,'product']) -> name('product') ;
+Route::post('/product/add' ,[AdminController::class,'addProduct']) -> name('addProduct') ;
+Route::get('product/edit/{product_code}' ,[AdminController::class,'editProduct']) ;
+Route::post('/product/update/',[AdminController::class,'updateProduct']) ;
+
+Route::get('user/edit/{id}' ,[AdminController::class,'editUser'])  -> middleware('check');
+Route::post('/user/update/',[AdminController::class,'updateUser']);
+Route::post('/user/changerole/',[AdminController::class,'changeRole']) -> name('changeRole');
+Route::get('/user/delete/{id}',[AdminController::class,'deleteUser']) -> middleware('check');
+
+
+Route::get('/user/buy/{id}',[AdminController::class,'buy']);
+
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    $users = User::all();
-    return view('dashboard' , compact('users'));
+    // $user = User::all();
+    // return view('dashboard' , compact('user'));
+    $user = Auth::user() -> id ;
+    return view('dashboard' , compact('user'));
+
+
 })->name('dashboard');

@@ -29,7 +29,13 @@ class User extends Authenticatable
         'password',
         'phone_no',
         'status',
-
+        'firstname',
+        'lastname',
+        'extention',
+        'officeCode',
+        'reportTo',
+        'jobTitle'
+      
     ];
 
     /**

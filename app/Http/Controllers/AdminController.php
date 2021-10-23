@@ -12,70 +12,53 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
-    function index(){
+    public function index(){
             $users = User::all();
-            $user = Auth::user() -> name  ;
-
-            if($user== "EMANUEL"){
-
+            //$user = Auth::user() -> name  ;
             return view('Admin.admin' ,compact('users'));
+            // if($user== "EMANUEL"){
+            
+            // return view('Admin.admin' ,compact('users'));
 
-            }else {
+            // }else {
 
-                return view('/dashboard');
+            //     return view('/dashboard');
 
-            }
+            // }
 
 
 
     }
 
-    function customer(){
+    public function  customer(){
         $customers= Customer::all();
-        $user = Auth::user() -> name  ;
 
-        if($user== "EMANUEL"){
+        return view('Customer.customer' ,compact('customers'));
 
-        return view('Admin.customer' ,compact('customers'));
 
-        }else {
-
-            return view('/dashboard');
-
-        }
+    
     }
 
-    function  employee(){
-        $employees = Employee::all();
-        $user = Auth::user() -> name  ;
+    public function  buy($id){
+ 
 
-        if($user== "EMANUEL"){
 
-        return view('Admin.employee' ,compact('employees'));
-
-        }else {
-
-            return view('/dashboard');
-
-        }
     }
 
-    function  product(){
+    public function   product(){
         $products = Product::all();
-        $user = Auth::user() -> name  ;
-
-        if($user== "EMANUEL"){
-
+     
         return view('Admin.product' ,compact('products'));
 
-        }else {
-
-            return view('Customer.product' ,compact('products')) ;
-
-        }
+    
     }
+
+    public function deleteUser($id){
+        $delete= Auth::user()->find($id)->forceDelete();
+        return redirect()->back()->with('success',"ลบข้อมูลถาวรเรียบร้อย");
+}
    
-    function  addEmployee(Request $request){
+    public function  addEmployee(Request $request){
 
         
         $request->validate(
@@ -146,10 +129,32 @@ class AdminController extends Controller
 
 
 
+    public function editUser($id){
+    
+    $user = Auth::user() -> id ;
+    $data =  User::find($id) ;
+    //  if($data -> status == 1 ){
+    //     $data -> status ="admin";
+    //  }else if ($data -> status  == 2){
+    //     $data -> status  =="sale";
+    //  }else if ($data -> status ==3){
+    //     $data -> status = "customer" ;
+    //  }
+     
+    $name = $data -> id ; 
+    if($user == $name){
+     return view('admin.editUser' , ['data' => $data]);    
+     
+              
+     }else{
+
+         dd("you not a who can change role") ;
+     }
+    }
 
 
 
-        public function editProduct($id){
+     public function editProduct($id){
            //$edit = DB::table('products') -> get() -> where($request = 'product_code');
         //    $users = DB::table('products')->where( $request-> product_cod , product->product_code);
 
@@ -157,8 +162,9 @@ class AdminController extends Controller
         //        echo $user->name;
         //    }
         
-        $data =  product::find($id) ;
-        return view('admin.editProduct' , ['data' => $data]);    
+     $data =  product::find($id) ;
+
+    return view('admin.editProduct' , ['data' => $data]);    
         
                     // $product_code = $request->input('product_code');
                     // $product_name = $request->input('product_name');
@@ -169,9 +175,53 @@ class AdminController extends Controller
                                  //  $product = Product::find($product_code);
              
             //  return view('admin.editProduct',compact('product'));
-        }
+    }
 
-        public function updateProduct(Request $request ){
+    public function changeRole(Request $request){
+        $data = User::find($request->id) ;
+        $data["reportTo"] = $request-> reportTo;
+        $data["jobTitle"] = $request->jobTitle;
+        $data-> save() ;
+
+        return view('/admin');
+    }
+    public function updateUser(Request $request ){
+
+        //ตรวจสอบข้อมูล
+        // $request->validate(
+        //     [
+        //         'department_name'=>'required|unique:departments|max:255'
+        //     ],
+        //     [
+        //         'department_name.required'=>"กรุณาป้อนชื่อแผนกด้วยครับ",
+        //         'department_name.max' => "ห้ามป้อนเกิน 255 ตัวอักษร",
+        //         'department_name.unique'=>"มีข้อมูลชื่อแผนกนี้ในฐานข้อมูลแล้ว"
+        //     ]
+        // );
+
+        //return $request -> input() ; 
+        $data = User::find($request->id) ;
+      
+        
+        $data["firstname"] = $request-> firstname;
+        $data["lastname"] = $request->lastname;
+        $data["extention"] = $request-> extention;
+        $data["officeCode"] = $request->officeCode;
+        $data["phone_no"] = $request-> phone_no;
+       
+        $data-> save() ;
+        return redirect ('/dashboard') ; 
+
+        //return $request ->input();
+        //dd($product_code);
+        // $update = Product::find($product_code)->update([
+        //     'product_code'=>$request->product_code,
+        //    // 'user_id'=>Auth::user()->id
+        // ]);
+        // return redirect()->route('product')->with('success',"อัพเดตข้อมูลเรียบร้อย");
+    }
+
+    public function updateProduct(Request $request ){
 
             //ตรวจสอบข้อมูล
             // $request->validate(

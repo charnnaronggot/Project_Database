@@ -23,7 +23,13 @@ class CreateUsersTable extends Migration
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->string('phone_no')->unique();
-            $table->string('status');
+            $table->string('status')->nullable();
+            $table->string('firstname')->nullable() ;
+            $table->string('lastname') ->nullable();
+            $table->string('extention')->nullable();
+            $table->string('officeCode')->nullable();
+            $table->string('reportTo')->nullable();
+            $table->string('jobTitle')->nullable();
             $table->timestamps();
         });
     }

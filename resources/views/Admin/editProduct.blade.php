@@ -31,17 +31,17 @@
                             <label for="product_line">product_line</label>
                             <input type="text" class = "form-control" name = "product_line" value ="{{$data->product_line}}">
                             <label for="product_scale">product_scale</label>
-                              <input type="text" class = "form-control" name = "product_scale" value ="{{$data->product_scale}}">
-                                 <label for="product_vendor">product_vendor</label>
-                                 <input type="text" class = "form-control" name = "product_vendor" value ="{{$data->product_vendor}}">
-                                <label for="product_description">product_description</label>
-                              <input type="text" class = "form-control" name = "product_description" value ="{{$data->product_description}}">
-                                <label for="quantity_instock">quantity_instock</label>
-                                <input type="integer" class = "form-control" name = "quantity_instock" value ="{{$data->quantity_instock}}">
-                                <label for="buy_price">buy_price</label>
-                                <input type="integer" class = "form-control" name = "buy_price" value ="{{$data->buy_price}}">
-                                <label for="MSRP">MSRP</label>
-                                <input type="integer" class = "form-control" name = "MSRP" value ="{{$data->MSRP}}">
+                            <input type="text" class = "form-control" name = "product_scale" value ="{{$data->product_scale}}">
+                            <label for="product_vendor">product_vendor</label>
+                            <input type="text" class = "form-control" name = "product_vendor" value ="{{$data->product_vendor}}">
+                            <label for="product_description">product_description</label>
+                            <input type="text" class = "form-control" name = "product_description" value ="{{$data->product_description}}">
+                            <label for="quantity_instock">quantity_instock</label>
+                            <input type="integer" class = "form-control" name = "quantity_instock" value ="{{$data->quantity_instock}}">
+                            <label for="buy_price">buy_price</label>
+                            <input type="integer" class = "form-control" name = "buy_price" value ="{{$data->buy_price}}">
+                            <label for="MSRP">MSRP</label>
+                            <input type="integer" class = "form-control" name = "MSRP" value ="{{$data->MSRP}}">
 
                                         </div>
                                         @error('product_code')

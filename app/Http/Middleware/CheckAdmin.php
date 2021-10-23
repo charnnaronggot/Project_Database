@@ -16,14 +16,21 @@ class CheckAdmin
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
-    {
-         $user = Auth::user() -> name;
-        if ($user = "EMANUEL" ) {
-            return $next($request); 
-        }
+    {   
 
-        return redirect('dashboard');
+        return $next($request); 
+    //     $status = Auth::user() -> status;
+    //     $user = Auth::user() -> name ;
+    //     if($user == "EMANUEL"){
+    //         $status = "admin" ;
+    //     } 
+       
+    //     if ($status == "admin" ) {
+    //         return $next($request); 
+    //     }else
+
+    //     return redirect('dashboard');
 
         
-    }
+     }
 }

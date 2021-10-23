@@ -10,28 +10,41 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
             <div class="py-5">
                         <div class = "col-md-12">
-                            
+                            <div class = "card-header">ตารางข้อมูล</div>
+                            <div class = "container">
+                                <div class = "row ">
+                                    <table class="table">
+                                        <thead>
+                                            
+                                        </thead>
+                                        
+                                        </table>
+                                        </div>
+                                    </div>
+
+                                                
+                        </div>
                 <div>
                     <div class = "col-md-12">
                             <div class = "card-header">แบบฟอร์ม</div>
                                 <div class ="card-body">
 
-                        <form action="/user/update/" method ="post" >
+                            <form action="" method ="post" >
                         @csrf
-                        <input type="hidden" name = "id" value = "{{Auth::user()  -> id}}">
+                        <input type="hidden" name = "id" value = "">
                                 <div class = "form-group">
                                     <label for="firstname">firstname</label>
-                                    <input type="text" class = "form-control" name = "firstname" value ="{{Auth::user() -> firstname}}">
+                                    <input type="integer" class = "form-control" name = "firstname" value ="">
                                     <label for="lastname">lastname</label>
-                                    <input type="text" class = "form-control" name = "lastname" value ="{{Auth::user() -> lastname}}">
+                                    <input type="text" class = "form-control" name = "lastname" value ="">
                                     <label for="extention">extention</label>
-                                    <input type="text" class = "form-control" name = "extention" value ="{{Auth::user() -> extention}}">
+                                    <input type="text" class = "form-control" name = "extention" value ="">
                                     <label for="officeCode">officeCode</label>
-                                    <input type="text" class = "form-control" name = "officeCode" value ="{{Auth::user() -> officeCode}}">
+                                    <input type="text" class = "form-control" name = "officeCode" value ="">
                                     <label for="reportTo">reportTo</label>
-                                    <input type="text" class = "form-control" name = "extention" value ="{{Auth::user() ->reportTo}}">
-                                    <label for="phone_no">phone</label>
-                                    <input type="text" class = "form-control" name = "phone_no" value ="{{Auth::user() -> phone_no}}">
+                                    <input type="text" class = "form-control" name = "extention" value ="">
+                                    <label for="jobTitle">jobTitle</label>
+                                    <input type="text" class = "form-control" name = "jobTitle" value ="">
                                 </div>
                             @error('product_code')
                                     <div class="my-2">
