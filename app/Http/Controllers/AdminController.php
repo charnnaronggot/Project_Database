@@ -33,7 +33,8 @@ class AdminController extends Controller
     public function  customer(){
         $customers= Customer::all();
 
-        return view('Customer.customer' ,compact('customers'));
+        return view('Customer.customer' ,
+        compact('customers'));
 
 
     
