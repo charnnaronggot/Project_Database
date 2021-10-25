@@ -15,7 +15,8 @@ class AdminController extends Controller
     public function index(){
             $users = User::all();
             //$user = Auth::user() -> name  ;
-            return view('Admin.admin' ,compact('users'));
+            return view('Admin.admin' ,
+            compact('users'));
             // if($user== "EMANUEL"){
             
             // return view('Admin.admin' ,compact('users'));
