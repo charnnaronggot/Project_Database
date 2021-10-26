@@ -33,19 +33,19 @@ Route::get('/admin' ,[AdminController::class,'index']) -> name('admin');
 
 
 
-Route::get('/customer' ,[AdminController::class,'customer']) -> name('customer');
+Route::get('/customer/all' ,[CustomerController::class,'customer']) -> name('customer');
 
 
 
 
-Route::get('/employee/all' ,[AdminController::class,'employee']) -> name('employee');
-Route::post('/employee/add' ,[AdminController::class,'addEmployee']) -> name('addEmployee');
+Route::get('/employee/all' ,[EmployeeController::class,'employee']) -> name('employee');
+Route::post('/employee/add' ,[EmployeeController::class,'addEmployee']) -> name('addEmployee');
 //Route::get('/employee/add' ,[AdminController::class,'addEmployee']) -> name('addEmployee');
 
-Route::get('/product/all' ,[AdminController::class,'product']) -> name('product') ;
-Route::post('/product/add' ,[AdminController::class,'addProduct']) -> name('addProduct') ;
-Route::get('product/edit/{product_code}' ,[AdminController::class,'editProduct']) ;
-Route::post('/product/update/',[AdminController::class,'updateProduct']) ;
+Route::get('/product/all' ,[ProductController::class,'product']) -> name('product') ;
+Route::post('/product/add' ,[ProductController::class,'addProduct']) -> name('addProduct') ;
+Route::get('product/edit/{product_code}' ,[ProductController::class,'editProduct']) ;
+Route::post('/product/update/',[ProductController::class,'updateProduct']) ;
 
 Route::get('user/edit/{id}' ,[AdminController::class,'editUser'])  -> middleware('check');
 Route::post('/user/update/',[AdminController::class,'updateUser']);

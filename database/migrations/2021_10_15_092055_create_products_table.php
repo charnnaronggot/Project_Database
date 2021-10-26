@@ -16,11 +16,11 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->integer('product_code')->unique();
-            $table->string('product_name');
-            $table->string('product_line')->nullable();
-            $table->string('product_scale')->nullable();
-            $table->string('product_vendor')->nullable();
-            $table->string('product_description')->nullable();
+            $table->text('product_name');
+            $table->text('product_line')->nullable();
+            $table->text('product_scale')->nullable();
+            $table->text('product_vendor')->nullable();
+            $table->text('product_description')->nullable();
             $table->integer('quantity_instock')->nullable();
             $table->integer('buy_price')->nullable();
             $table->integer('MSRP')->nullable();
