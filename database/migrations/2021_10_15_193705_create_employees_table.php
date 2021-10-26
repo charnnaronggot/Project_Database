@@ -18,8 +18,8 @@ class CreateEmployeesTable extends Migration
             $table->text('firstname') ;
             $table->text('lastname') ;
             $table->text('extention') ;
-            $table->text('email')  ->nullable();
-            $table->text('password') ->nullable();
+            $table->text('email') ->unique();
+            $table->text('password') ;
             $table->text('officerCode')  ->nullable();
             $table->text('reportTo')  ->nullable();
             $table->text('jobTitle')  ->nullable();

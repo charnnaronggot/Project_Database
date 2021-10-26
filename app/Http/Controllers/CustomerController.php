@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
@@ -17,7 +16,7 @@ class CustomerController extends Controller
 
     public function editCustomer($id){
         $data =  product::find($id) ;
-        return view('product.editProduct' , ['data' => $data]);    
+        return view('customer.editProduct' , ['data' => $data]);    
 
     }
 
@@ -32,7 +31,7 @@ class CustomerController extends Controller
     public function  addCustomer(Request $request){
           
         $user = Auth::user() -> id ;
-       $customers = Customer::all() ;
+       $customer = Customer::all() ;
    //     //บันทึกข้อมูล
    //     $data = array();
    //     $data["customerNumber"] = $request->customerNumber;
@@ -57,15 +56,13 @@ class CustomerController extends Controller
            $Customer -> phone = $request -> phone ;
            $Customer -> Addressid = $request -> AddressID ;
            $Customer -> SaleRepEmployeeNumber =   $user ;
-           
            $Customer -> save() ;
-           return view('customer.customer' , compact('customers'));
+           return view('customer.customer' , compact('customer'));
    }
 
    
    public function  customer(){
     $customer= Customer::all();
-
     return view('customer.customer' ,compact('customer'));
 
     }

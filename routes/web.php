@@ -35,9 +35,9 @@ Route::get('/admin' ,[AdminController::class,'index']) -> name('admin');
 
 
 Route::get('/customer/all' ,[CustomerController::class,'customer']) -> name('customer');
-Route::post('/customer/add' ,[CustomerController::class,'customer']) -> name('addCustomer');
-
-
+Route::post('/customer/add' ,[CustomerController::class,'addCustomer']) -> name('addCustomer');
+Route::get('customer/edit/{customerNumber}' ,[ProductController::class,'editcustomer'])-> name ('editCustomer') ;
+Route::post('/customer/update/',[ProductController::class,'updatecustomer']) -> name('updateCustomer');
 
 
 Route::get('/employee/all' ,[EmployeeController::class,'employee']) -> name('employee');
