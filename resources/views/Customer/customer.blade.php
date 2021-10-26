@@ -16,7 +16,43 @@
                                     <div class = "row ">
                                         <table class="table">
                                         
+                                       
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">customerNumber</th>
+                                                <th scope="col">customerNa</th>
+                                                <th scope="col">product_line</th>
+                                                <th scope="col">product_scale</th>
+                                                <th scope="col">product_vendor</th>
+                                                <th scope="col">product_description</th>
+                                                <th scope="col">quantity_instock</th>
+                                                <th scope="col">buy_price</th>
+                                                <th scope="col">MSRP</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($products as $row)
+                                            <tr>
+                                                    
+                                                <td>{{$row -> product_code}}</td>
+                                                <td>{{$row -> product_name}}</td>
+                                                <td>{{$row -> product_line}}</td>
+                                                <td>{{$row -> product_scale}}</td>
+                                                <td>{{$row -> product_vendor}}</td>
+                                                <td>{{$row -> product_description}}</td>
+                                                <td>{{$row -> quantity_instock}}</td>
+                                                <td>{{$row -> buy_price}}</td>
+                                                <td>{{$row -> MSRP}}</td>
+                                                    <td>
+                                                            <a href= {{url('/product/edit/'.$row->id)}} class="btn btn-primary">แก้ไข</a>
+                                                    </td>
+                                                    <td>
+                                                            <a href= {{url('/product/buy/'.$row->id)}} class="btn btn-primary">สั่งซื้อ</a>
+                                                    </td>
+                                                </tr> 
+                                                @endforeach
                                         
+                                        </table>
                                         </table>
                                     </div>
                                 </div>       

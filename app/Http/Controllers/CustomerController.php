@@ -3,6 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use App\Models\Customer;
+use App\Models\Employee;
+use App\Models\Product;
+use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends Controller
 {

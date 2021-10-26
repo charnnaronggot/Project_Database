@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CustomerController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,6 +35,7 @@ Route::get('/admin' ,[AdminController::class,'index']) -> name('admin');
 
 
 Route::get('/customer/all' ,[CustomerController::class,'customer']) -> name('customer');
+Route::post('/customer/add' ,[CustomerController::class,'customer']) -> name('addCustomer');
 
 
 
