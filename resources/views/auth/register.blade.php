@@ -11,35 +11,77 @@
 
             <div>
                 <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required
+                    autofocus autocomplete="name" />
             </div>
-
+            
+            <div class="mt-4">
+                <x-jet-label for="firstname" value="{{ __('firstname') }}" />
+                <x-jet-input id="firstname" class="block mt-1 w-full" type="text" name="firstname" :value="old('firstname')"
+                    required />
+            </div>
+            
+            <div class="mt-4">
+                <x-jet-label for="lastname" value="{{ __('lastname') }}" />
+                <x-jet-input id="lastname" class="block mt-1 w-full" type="text" name="lastname" :value="old('lastname')"
+                    required />
+            </div>
             <div class="mt-4">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
+                    required />
             </div>
 
             <div class="mt-4">
+                <x-jet-label for="phone_no" value="{{ __('Phone_no') }}" />
+                <x-jet-input id="phone_no" class="block mt-1 w-full" type="text" name="phone_no" :value="old('phone_no')"
+                    required />
+            </div>
+            <div class="mt-4">
+                <x-jet-label for="extention" value="{{ __('extention') }}" />
+                <x-jet-input id="extention" class="block mt-1 w-full" type="text" name="extention" 
+                    required />
+            </div>
+            <div class="mt-4">
+                <x-jet-label for="officeCode" value="{{ __('officeCode') }}" />
+                <x-jet-input id="officeCode" class="block mt-1 w-full" type="text" name="officeCode"
+                    required />
+            </div>
+            <div class="mt-4">
+                <x-jet-label for="reportTo" value="{{ __('reportTo') }}" />
+                <x-jet-input id="reportTo" class="block mt-1 w-full" type="text" name="reportTo" 
+                    required />
+            </div>
+            <div class="mt-4">
+                <x-jet-label for="jobTitle" value="{{ __('jobTitle') }}" />
+                <x-jet-input id="jobTitle" class="block mt-1 w-full" type="text" name="jobTitle" 
+                    required />
+            </div>
+
+            
+            <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required
+                    autocomplete="new-password" />
             </div>
 
             <div class="mt-4">
                 <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password"
+                    name="password_confirmation" required autocomplete="new-password" />
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
                     <x-jet-label for="terms">
                         <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms"/>
+                            <x-jet-checkbox name="terms" id="terms" />
 
                             <div class="ml-2">
                                 {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
-                                ]) !!}
+    'terms_of_service' => '<a target="_blank" href="' . route('terms.show') . '" class="underline text-sm text-gray-600 hover:text-gray-900">' . __('Terms of Service') . '</a>',
+    'privacy_policy' => '<a target="_blank" href="' . route('policy.show') . '" class="underline text-sm text-gray-600 hover:text-gray-900">' . __('Privacy Policy') . '</a>',
+]) !!}
                             </div>
                         </div>
                     </x-jet-label>
