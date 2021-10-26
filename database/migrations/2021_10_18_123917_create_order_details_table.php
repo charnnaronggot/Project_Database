@@ -21,7 +21,7 @@ class CreateOrderDetailsTable extends Migration
             $table->double('priceEach');
             $table->string('orderLineNumber');
             $table->timestamps();
-            $table->softDelete();
+            $table->softDeletes();
         });
     }
 

@@ -18,8 +18,8 @@ class CreatePreOrdersTable extends Migration
             $table->integer('orderNumber')->unique();
             $table->integer('productCode')->unique();
             $table->double('preSale');
-            $table->quantity('quantity');
-            $table->softDelete();
+            $table->integer('quantity');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -20,7 +20,7 @@ class CreatePaymentsTable extends Migration
             $table->integer('paymentDate');
             $table->string('amount');
             $table->timestamps();
-            $table->softDelete();
+            $table->softDeletes();
     });
     }
     /**

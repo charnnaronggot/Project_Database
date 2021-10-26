@@ -19,7 +19,7 @@ class CreateProductLinesTable extends Migration
             $table->string('textDescription');
             $table->string('htmlDescription');
             $table->string('imageBL');
-            $table->softDelete();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
